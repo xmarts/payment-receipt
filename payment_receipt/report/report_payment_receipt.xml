@@ -149,8 +149,8 @@
     </xpath>
   </template>
   <template id="web_external_layout_standard_header" inherit_id="web.external_layout_standard">
-    <xpath expr="//div[@class='header']" position="replace">
-      <div class="header">
+    <xpath expr="//div[@t-attf-class='header']" position="replace">
+      <div t-attf-class="header o_company_#{company.id}_layout">
 <!--         <t t-set="o" t-value="o.with_context(lang=lang)"/>
         <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/> -->
         <div class="row">
