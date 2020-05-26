@@ -1,36 +1,11 @@
 <odoo>
-  <template id="report_payment_receipt" inherit_id="web.external_layout_standard">
-    <xpath expr="//t[@t-name='web.external_layout_standard']" position="replace">
-      <t t-name="web.external_layout_standard">
+  <template id="account_report_payment_receipt_document_page" inherit_id="account.report_payment_receipt_document">
+    <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+      <t t-call="web.external_layout">
         <t t-set="o" t-value="o.with_context(lang=lang)"/>
         <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/>
         <t t-set="pago" t-value="o.l10n_mx_edi_get_pago_etree(xml)" />
         <t t-set="tfd" t-value="o.l10n_mx_edi_get_tfd_etree(xml)"/>
-        <div class="header">
-            <div class="row">
-              <div class="col-md-4" style="text-align: center;">
-                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 200px;" alt="Logo"/>
-              </div>
-              <div class="col-md-4" style="text-align: center;">
-                <h3><strong>WNI MEXICO S.A DE S.V:</strong></h3>
-                WME051219G52<br/>
-                General de Ley Personas Morales<br/>
-                Francisco Pimentel No.98<br/>
-                San Rafael,<br/>
-                Ciudad de México, México CP:06470<br/>
-              </div>
-              <div class="col-md-4" style="text-align: center;">
-                <h4><strong>Recibo Electrónico de Pagos:</strong></h4>
-                <h3><span t-field="o.name"/></h3>
-                <strong>Folio Fiscal:</strong><br/>
-                <span t-field="o.l10n_mx_edi_cfdi_uuid"/><br/>
-                <strong>Fecha Emisión: </strong><br/>
-                <strong>Fecha Certificación: </strong><br/>
-                <strong>Expedido en: </strong><span t-esc="xml.get('LugarExpedicion')"/><br/>
-              </div>
-            </div>
-        </div>
-        <br/> <br/>
         <div class="page">
           <table border="1" style="width:100%; border: 2px solid;">
               <tr>
@@ -170,27 +145,37 @@
             </div>
           </t>
         </div>
-        <div class="footer o_standard_footer">
-            <div class="text-center" style="border-top: 1px solid black;">
-                <ul class="list-inline mb4">
-                    <!-- using the list-inline-item class from bootstrap causes weird behaviours in pdf report
-                         adding d-inline class fixes the problem-->
-                    <li t-if="company.phone" class="list-inline-item d-inline">Phone: <span t-field="company.phone"/></li>
-                    <li t-if="company.email" class="list-inline-item d-inline">Email: <span t-field="company.email"/></li>
-                    <li t-if="company.website" class="list-inline-item d-inline">Web: <span t-field="company.website"/></li>
-                    <li t-if="company.vat" class="list-inline-item d-inline"><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
-                </ul>
-
-                <div name="financial_infos">
-                    <span t-field="company.report_footer"/>
-                </div>
-
-                <div t-if="report_type == 'pdf'" class="text-muted">
-                    Page: <span class="page"/> / <span class="topage"/>
-                </div>
-            </div>
-        </div>
       </t>
+    </xpath>
+  </template>
+  <template id="web_external_layout_standard_header" inherit_id="web.external_layout_standard">
+    <xpath expr="//div[@class='header']" position="replace">
+      <div class="header">
+<!--         <t t-set="o" t-value="o.with_context(lang=lang)"/>
+        <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/> -->
+        <div class="row">
+          <div class="col-md-4" style="text-align: center;">
+            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 200px;" alt="Logo"/>
+          </div>
+          <div class="col-md-4" style="text-align: center;">
+            <h3><strong>WNI MEXICO S.A DE S.V:</strong></h3>
+            WME051219G52<br/>
+            General de Ley Personas Morales<br/>
+            Francisco Pimentel No.98<br/>
+            San Rafael,<br/>
+            Ciudad de México, México CP:06470<br/>
+          </div>
+          <div class="col-md-4" style="text-align: center;">
+            <h4><strong>Recibo Electrónico de Pagos:</strong></h4>
+            <h3><span t-field="o.name"/></h3>
+            <strong>Folio Fiscal:</strong><br/>
+            <span t-field="o.l10n_mx_edi_cfdi_uuid"/><br/>
+            <strong>Fecha Emisión: </strong><br/>
+            <strong>Fecha Certificación: </strong><br/>
+            <strong>Expedido en: </strong><span t-esc="xml.get('LugarExpedicion')"/><br/>
+          </div>
+        </div>
+      </div>
     </xpath>
   </template>
 </odoo>
