@@ -58,7 +58,7 @@ class payment_receipt(models.Model):
 		return lista
 
 	@api.model
-	def l10n_mx_edi_get_pago_etree(self, cfdi):
+	def complemento_pago(self, cfdi):
 		data = base64.decodestring(self.l10n_mx_edi_cfdi)
 		root =ElementTree.fromstring(data)
 		vals = {}
