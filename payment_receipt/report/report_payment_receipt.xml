@@ -149,33 +149,33 @@
     </xpath>
   </template>
   <template id="web_external_layout_standard_header" inherit_id="web.external_layout_standard">
-    <xpath expr="//div[@t-attf-class='header']" position="replace">
-      <div t-attf-class="header o_company_#{company.id}_layout">
+    <xpath expr="//div[@class='row']" position="replace">
+      <!-- <div t-attf-class="header o_company_#{company.id}_layout"> -->
 <!--         <t t-set="o" t-value="o.with_context(lang=lang)"/>
         <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/> -->
-        <div class="row">
-          <div class="col-md-4" style="text-align: center;">
-            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 200px;" alt="Logo"/>
-          </div>
-          <div class="col-md-4" style="text-align: center;">
-            <h3><strong>WNI MEXICO S.A DE S.V:</strong></h3>
-            WME051219G52<br/>
-            General de Ley Personas Morales<br/>
-            Francisco Pimentel No.98<br/>
-            San Rafael,<br/>
-            Ciudad de México, México CP:06470<br/>
-          </div>
-          <div class="col-md-4" style="text-align: center;">
-            <h4><strong>Recibo Electrónico de Pagos:</strong></h4>
-            <h3><span t-field="o.name"/></h3>
-            <strong>Folio Fiscal:</strong><br/>
-            <span t-field="o.l10n_mx_edi_cfdi_uuid"/><br/>
-            <strong>Fecha Emisión: </strong><br/>
-            <strong>Fecha Certificación: </strong><br/>
-            <strong>Expedido en: </strong><span t-esc="xml.get('LugarExpedicion')"/><br/>
-          </div>
+      <div class="row">
+        <div class="col-md-4" style="text-align: center;">
+          <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 200px;" alt="Logo"/>
+        </div>
+        <div class="col-md-4" style="text-align: center;">
+          <h3><strong>WNI MEXICO S.A DE S.V:</strong></h3>
+          WME051219G52<br/>
+          General de Ley Personas Morales<br/>
+          Francisco Pimentel No.98<br/>
+          San Rafael,<br/>
+          Ciudad de México, México CP:06470<br/>
+        </div>
+        <div class="col-md-4" style="text-align: center;">
+          <h4><strong>Recibo Electrónico de Pagos:</strong></h4>
+          <h3><span t-field="o.name"/></h3>
+          <strong>Folio Fiscal:</strong><br/>
+          <span t-field="o.l10n_mx_edi_cfdi_uuid"/><br/>
+          <strong>Fecha Emisión: </strong><br/>
+          <strong>Fecha Certificación: </strong><br/>
+          <strong>Expedido en: </strong><span t-esc="xml.get('LugarExpedicion')"/><br/>
         </div>
       </div>
+      <!-- </div> -->
     </xpath>
   </template>
 </odoo>
