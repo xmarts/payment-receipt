@@ -28,7 +28,7 @@ class payment_receipt(models.Model):
 						monto =	pago.get('Monto')
 						for doc in pago:
 							if lista:
-								result_lista = buscar_registro(lista,doc.attrib['Folio'])
+								result_lista = self.buscar_registro(lista,doc.attrib['Folio'])
 								if result_lista == False:
 									vals = {
 									'serie': doc.attrib['Serie'],
