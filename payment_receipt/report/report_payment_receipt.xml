@@ -114,7 +114,7 @@
                   <t t-set="monto_pago" t-value="0"/>
                   <tr t-foreach="o.complemento()" t-as="inv">
                     <t t-set="monto_pago" t-value="monto_pago+float(inv['monto'])" />
-                    <td><span t-field="o.l10n_mx_edi_cfdi_uuid"/><span t-esc="tfd.get('UUID')"/></td>
+                    <td><span t-field="o.l10n_mx_edi_cfdi_uuid"/></td>
                     <td><span t-esc="inv['serie']"/></td>
                     <td><span t-esc="inv['folio']"/></td>
                     <td><span t-esc="inv['moneda_DR']"/></td>
