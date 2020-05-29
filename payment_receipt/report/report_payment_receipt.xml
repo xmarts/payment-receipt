@@ -21,19 +21,19 @@
               </t>
           </t>
           <div class="header">
-              <div class="row mt32 mb32">
-                <div class="col-4 text-center">
+              <div class="row">
+                <div class="offset-0 text-center">
                   <img t-att-src="image_data_uri(company.logo)" style="max-height: 200px;" alt="Logo"/>
                 </div>
-                <div class="col-4 text-center">
-                  <h3><strong>WNI MEXICO S.A DE S.V:</strong></h3>
+                <div class="offset-1 text-center">
+                  <h3><strong>WNI MEXICO S.A DE S.V</strong></h3>
                   WME051219G52<br/>
                   General de Ley Personas Morales<br/>
                   Francisco Pimentel No.98<br/>
                   San Rafael,<br/>
                   Ciudad de México, México CP:06470<br/>
                 </div>
-                <div class="col-4 text-center">
+                <div class="offset-2 text-center">
                   <h4><strong>Recibo Electrónico de Pagos:</strong></h4>
                   <h3><span t-field="o.name"/></h3>
                   <strong>Folio Fiscal:</strong><br/>
