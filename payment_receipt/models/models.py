@@ -28,20 +28,19 @@ class payment_receipt(models.Model):
 						monto =	pago.get('Monto')
 						for doc in pago:
 							if lista:
-								for listaa in lista:
-									result = listaa(lista,doc.attrib['Folio'])
-									if result == False:
-										vals = {
-										'serie': doc.attrib['Serie'],
-										'folio': doc.attrib['Folio'],
-										'moneda_DR': doc.attrib['MonedaDR'],
-										'num_parcialidad':doc.attrib['NumParcialidad'],
-										'imp_saldo_ant':doc.attrib['ImpSaldoAnt'],
-										'imp_pagado': doc.attrib['ImpPagado'],
-										'imp_saldo_insoluto':doc.attrib['ImpSaldoInsoluto'],
-										'monto':monto
-										}
-										lista.append(vals)
+								result_lista = buscar_registro(lista,doc.attrib['Folio'])
+								if result_lista == False:
+									vals = {
+									'serie': doc.attrib['Serie'],
+									'folio': doc.attrib['Folio'],
+									'moneda_DR': doc.attrib['MonedaDR'],
+									'num_parcialidad':doc.attrib['NumParcialidad'],
+									'imp_saldo_ant':doc.attrib['ImpSaldoAnt'],
+									'imp_pagado': doc.attrib['ImpPagado'],
+									'imp_saldo_insoluto':doc.attrib['ImpSaldoInsoluto'],
+									'monto':monto
+									}
+									lista.append(vals)
 							else:
 								if cont == 0:
 									vals = {
@@ -58,10 +57,10 @@ class payment_receipt(models.Model):
 									cont = 1
 		return lista
 
-	def listaa(self, listaaa, dato_folio):
+	def buscar_registro(self, lista, data_folio):
 		res = False
-		for lis in listaaa:
-			if lis['folio'] == dato_folio:
+		for data in lista:
+			if data['folio'] == data_folio:
 				res = True
 				return res
 		return res
