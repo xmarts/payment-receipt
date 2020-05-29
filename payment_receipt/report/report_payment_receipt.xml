@@ -112,27 +112,29 @@
                 </thead>
                 <tbody>
                   <t t-set="monto_pago" t-value="0"/>
-                  <tr t-foreach="o.complemento()" t-as="inv">
-                    <t t-set="monto_pago" t-value="monto_pago+float(inv['monto'])" />
-                    <td><span t-field="o.l10n_mx_edi_cfdi_uuid"/></td>
-                    <td><span t-esc="inv['serie']"/></td>
-                    <td><span t-esc="inv['folio']"/></td>
-                    <td><span t-esc="inv['moneda_DR']"/></td>
-                    <td><span t-field="o.currency_id.rate"/></td>
-                    <td><span t-esc="inv['num_parcialidad']"/></td>
-                    <td style="font-size:11pt;">
-                      <span>$</span>
-                      <span t-esc="'{:,.2f}'.format(float(inv['imp_saldo_ant']))"/>
-                    </td>
-                    <td style="font-size:11pt;">
-                      <span>$</span>
-                      <span t-esc="'{:,.2f}'.format(float(inv['imp_pagado']))"/>
-                    </td>
-                    <td style="font-size:11pt;">
-                      <span>$</span>
-                      <span t-esc="'{:,.2f}'.format(float(inv['imp_saldo_insoluto']))"/>
-                    </td>
-                  </tr>
+                  <t t-if="o.l10n_mx_edi_cfdi_uuid">
+                    <tr t-foreach="o.complemento()" t-as="inv">
+                      <t t-set="monto_pago" t-value="monto_pago+float(inv['monto'])" />
+                      <td><span t-field="o.l10n_mx_edi_cfdi_uuid"/></td>
+                      <td><span t-esc="inv['serie']"/></td>
+                      <td><span t-esc="inv['folio']"/></td>
+                      <td><span t-esc="inv['moneda_DR']"/></td>
+                      <td><span t-field="o.currency_id.rate"/></td>
+                      <td><span t-esc="inv['num_parcialidad']"/></td>
+                      <td style="font-size:11pt;">
+                        <span>$</span>
+                        <span t-esc="'{:,.2f}'.format(float(inv['imp_saldo_ant']))"/>
+                      </td>
+                      <td style="font-size:11pt;">
+                        <span>$</span>
+                        <span t-esc="'{:,.2f}'.format(float(inv['imp_pagado']))"/>
+                      </td>
+                      <td style="font-size:11pt;">
+                        <span>$</span>
+                        <span t-esc="'{:,.2f}'.format(float(inv['imp_saldo_insoluto']))"/>
+                      </td>
+                    </tr>
+                  </t>
                   <tr >
                     <th class="tg-s6z2" colspan="2">Monto Pago:</th>
                     <td class="tg-s6z2" colspan="2">

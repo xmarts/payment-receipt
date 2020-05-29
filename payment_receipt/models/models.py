@@ -29,7 +29,8 @@ class payment_receipt(models.Model):
 						for doc in pago:
 							if lista:
 								for listaa in lista:
-									if listaa['folio'] != doc.attrib['Folio']:
+									result = listaa(lista,doc.attrib['Folio'])
+									if result == False:
 										vals = {
 										'serie': doc.attrib['Serie'],
 										'folio': doc.attrib['Folio'],
@@ -56,6 +57,14 @@ class payment_receipt(models.Model):
 									lista.append(vals)
 									cont = 1
 		return lista
+
+	def listaa(self, listaaa, dato_folio):
+		res = False
+		for lis in listaaa:
+			if lis['folio'] == dato_folio:
+				res = True
+				return res
+		return res
 
 	@api.model
 	def complemento_pago(self, cfdi):
