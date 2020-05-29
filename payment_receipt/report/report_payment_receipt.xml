@@ -23,9 +23,6 @@
           <div class="header">
               <div class="row">
                 <div class="col-md-4 text-center">
-                  <img t-att-src="image_data_uri(company.logo)" style="max-height: 200px;" alt="Logo"/>
-                </div>
-                <div class="col-md-4 text-center">
                   <h3><strong>WNI MEXICO S.A DE S.V:</strong></h3>
                   WME051219G52<br/>
                   General de Ley Personas Morales<br/>
@@ -50,6 +47,9 @@
                       <span t-esc="xml.get('LugarExpedicion', 'No identificado')"/>
                   </span>
                   <br/>
+                </div>
+                <div class="col-md-4 text-center">
+                  <img t-att-src="image_data_uri(company.logo)" style="max-height: 200px;" alt="Logo"/>
                 </div>
               </div>
           </div>
