@@ -26,7 +26,7 @@
             <img t-att-src="image_data_uri(company.logo)" style="max-height: 200px;" alt="Logo"/>
           </div>
           <div class="col-6 text-center" style="width:30%">
-            <h3><strong>WNI MEXICO S.A DE S.V</strong></h3>
+            <h5><strong>WNI MEXICO S.A DE S.V</strong></h5>
             WME051219G52<br/>
             General de Ley Personas Morales<br/>
             Francisco Pimentel No.98<br/>
@@ -34,8 +34,8 @@
             Ciudad de México, México CP:06470<br/>
           </div>
           <div class="col-6 text-center" style="width:30%">
-            <h4><strong>Recibo Electrónico de Pagos:</strong></h4>
-            <h3><span t-field="o.name"/></h3>
+            <h6><strong>Recibo Electrónico de Pagos:</strong></h6>
+            <h5><span t-field="o.name"/></h5>
             <strong>Folio Fiscal:</strong><br/>
             <span t-if="o.l10n_mx_edi_cfdi_uuid">
                 <span t-field="o.l10n_mx_edi_cfdi_uuid"/><br/>
@@ -81,8 +81,8 @@
                       <t t-set="pago" t-value="o.complemento_pago(xml)" />
                   </t>
                   <div class="page">
-                    <br/><br/><br/><br/><br/><br/>
-                      <table border="1" style="width:100%; border: 2px solid;">
+                    <br/><br/><br/><br/>
+                    <table border="1" style="width:100%; border: 2px solid;">
                         <tr>
                           <td style="width:50%; border: 2px solid;">
                             <strong>CLIENTE:</strong><br/><br/>
@@ -194,6 +194,7 @@
                           </tr>
                         </tbody>
                     </table>
+                    <br/><br/><br/>
                     <hr/>
                     <t t-if="o.l10n_mx_edi_cfdi_uuid">
                       <div class="row" style="font-size:12px;" id="complement">
