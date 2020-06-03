@@ -145,7 +145,7 @@
                               <td><span t-esc="inv['serie']"/></td>
                               <td><span t-esc="inv['folio']"/></td>
                               <td><span t-esc="inv['moneda_DR']"/></td>
-                              <td><span t-field="o.currency_id.rate"/></td>
+                              <td><span t-esc="inv['tipo_cambio_p']"/></td>
                               <td><span t-esc="inv['num_parcialidad']"/></td>
                               <td style="font-size:11pt;">
                                 <span>$</span>
