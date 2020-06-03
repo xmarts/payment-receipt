@@ -80,7 +80,7 @@ class payment_receipt(models.Model):
 						vals = {
 						# 'fecha_pago': pago.get('FechaPago'),
 						'forma_de_pago_p': pago.get('FormaDePagoP'),
-						'tipo_cambio_p': doc.attrib['TipoCambioP'],
+						'tipo_cambio_p': pago.get('TipoCambioP'),
 						'num_operacion': pago.get('NumOperacion')
 						}
 						cont = 1
