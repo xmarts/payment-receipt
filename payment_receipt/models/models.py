@@ -34,7 +34,6 @@ class payment_receipt(models.Model):
 									'serie': doc.attrib['Serie'],
 									'folio': doc.attrib['Folio'],
 									'moneda_DR': doc.attrib['MonedaDR'],
-									'tipo_cambio_p': doc.attrib['TipoCambioP'],
 									'num_parcialidad':doc.attrib['NumParcialidad'],
 									'imp_saldo_ant':doc.attrib['ImpSaldoAnt'],
 									'imp_pagado': doc.attrib['ImpPagado'],
@@ -48,7 +47,6 @@ class payment_receipt(models.Model):
 									'serie': doc.attrib['Serie'],
 									'folio': doc.attrib['Folio'],
 									'moneda_DR': doc.attrib['MonedaDR'],
-									'tipo_cambio_p': doc.attrib['TipoCambioP'],
 									'num_parcialidad':doc.attrib['NumParcialidad'],
 									'imp_saldo_ant':doc.attrib['ImpSaldoAnt'],
 									'imp_pagado': doc.attrib['ImpPagado'],
@@ -82,6 +80,7 @@ class payment_receipt(models.Model):
 						vals = {
 						# 'fecha_pago': pago.get('FechaPago'),
 						'forma_de_pago_p': pago.get('FormaDePagoP'),
+						'tipo_cambio_p': doc.attrib['TipoCambioP'],
 						'num_operacion': pago.get('NumOperacion')
 						}
 						cont = 1
