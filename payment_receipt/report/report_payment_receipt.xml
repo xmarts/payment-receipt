@@ -1,12 +1,27 @@
 <odoo>
+  <record id="paperformat_low_monthly_report" model="report.paperformat">
+        <field name="name">PF Monthly Report</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">15</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">3</field>
+        <field name="dpi">110</field>
+  </record> 
   <report
     id="account.action_report_payment_receipt"
     model="account.payment"
     string="Recibo de Pago"
     report_type="qweb-pdf"
     name="payment_receipt.report_payment_receipt"
-    file="payment_receipt.report_payment_receipt"/>
-
+    file="payment_receipt.report_payment_receipt"
+    paperformat="payment_receipt.paperformat_low_monthly_report"/>
   <template id="payment_receipt.my_template">
     <t t-if="not o" t-set="o" t-value="doc"/>
     <t t-if="not company">
@@ -49,7 +64,6 @@
             <span t-if="o.l10n_mx_edi_cfdi_uuid">
                 <span t-esc="xml.get('LugarExpedicion', 'No identificado')"/>
             </span>
-            <br/>
           </div>
         </div>
     </div>
@@ -81,7 +95,7 @@
                       <t t-set="pago" t-value="o.complemento_pago(xml)" />
                   </t>
                   <div class="page">
-                    <br/><br/><br/><br/>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <table border="1" style="width:100%; border: 2px solid;">
                         <tr>
                           <td style="width:50%; border: 2px solid;">
@@ -92,7 +106,7 @@
                             CP: <span t-field="o.partner_id.zip"/>  <br/>
                             RFC: <span t-field="o.partner_id.vat"/>
                           </td>
-                          <td style="width:50%; border: 2px solid;">
+                          <td style="width:50%; border: 2px solid; background: White;">
                             <strong>Uso CFDI: </strong>
                             <span t-if="o.l10n_mx_edi_cfdi_uuid">
                               [<span t-esc="xml.Receptor.get('UsoCFDI', '')"/>] Por definir
@@ -122,18 +136,18 @@
                     </table>
                     <br/>
                     <br/>
-                    <table class="table table-sm">
+                    <table class="table table-sm" style="border: medium transparent">
                         <thead>
-                            <tr style="border-bottom: solid;">
-                              <th><span>Folio Fiscal</span></th>
-                              <th><span>Serie</span></th>
-                              <th><span>Folio</span></th>
-                              <th><span>Moneda Factura</span></th>
-                              <th><span>T.C</span></th>
-                              <th><span>Parcialidad</span></th>
-                              <th><span>Saldo Anterior</span></th>
-                              <th><span>Saldo Aplicado</span></th>
-                              <th><span>Saldo Insoluto</span></th>
+                            <tr>
+                              <th style="border: medium transparent"><span>Folio Fiscal</span></th>
+                              <th style="border: medium transparent"><span>Serie</span></th>
+                              <th style="border: medium transparent"><span>Folio</span></th>
+                              <th style="border: medium transparent"><span>Moneda Factura</span></th>
+                              <th style="border: medium transparent"><span>T.C</span></th>
+                              <th style="border: medium transparent"><span>Parcialidad</span></th>
+                              <th style="border: medium transparent"><span>Saldo Anterior</span></th>
+                              <th style="border: medium transparent"><span>Saldo Aplicado</span></th>
+                              <th style="border: medium transparent"><span>Saldo Insoluto</span></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -141,40 +155,40 @@
                           <t t-if="o.l10n_mx_edi_cfdi_uuid">
                             <tr t-foreach="o.complemento()" t-as="inv">
                               <t t-set="monto_pago" t-value="monto_pago+float(inv['monto'])" />
-                              <td><span t-field="o.l10n_mx_edi_cfdi_uuid"/></td>
-                              <td><span t-esc="inv['serie']"/></td>
-                              <td><span t-esc="inv['folio']"/></td>
-                              <td><span t-esc="inv['moneda_DR']"/></td>
-                              <td><span t-esc="pago.get('tipo_cambio_p')"/></td>
-                              <td><span t-esc="inv['num_parcialidad']"/></td>
-                              <td style="font-size:11pt;">
+                              <td style="border: medium transparent;"><span t-field="o.l10n_mx_edi_cfdi_uuid"/></td>
+                              <td style="border: medium transparent;"><span t-esc="inv['serie']"/></td>
+                              <td style="border: medium transparent;"><span t-esc="inv['folio']"/></td>
+                              <td style="border: medium transparent;"><span t-esc="inv['moneda_DR']"/></td>
+                              <td style="border: medium transparent;"><span t-esc="pago.get('tipo_cambio_p')"/></td>
+                              <td style="border: medium transparent;"><span t-esc="inv['num_parcialidad']"/></td>
+                              <td style="border: medium transparent; font-size:11pt;">
                                 <span>$</span>
                                 <span t-esc="'{:,.2f}'.format(float(inv['imp_saldo_ant']))"/>
                               </td>
-                              <td style="font-size:11pt;">
+                              <td style="border: medium transparent; font-size:11pt;">
                                 <span>$</span>
                                 <span t-esc="'{:,.2f}'.format(float(inv['imp_pagado']))"/>
                               </td>
-                              <td style="font-size:11pt;">
+                              <td style="border: medium transparent; font-size:11pt; background: White;">
                                 <span>$</span>
                                 <span t-esc="'{:,.2f}'.format(float(inv['imp_saldo_insoluto']))"/>
                               </td>
                             </tr>
                           </t>
                           <tr >
-                            <th class="tg-s6z2" colspan="2">Monto Pago:</th>
-                            <td class="tg-s6z2" colspan="2">
+                            <th class="tg-s6z2" colspan="2" style="border: medium transparent;">Monto Pago:</th>
+                            <td class="tg-s6z2" colspan="2" style="background: White; border: medium transparent;">
                               <span>$</span>
                               <t t-esc="'{:,.2f}'.format(float(monto_pago))" />
                             </td>
                           </tr>
                           <tr>
-                            <th class="tg-s6z2" colspan="2">Moneda:</th>
-                            <td class="tg-s6z2" colspan="2"><span t-field="o.currency_id"/></td>
+                            <th class="tg-s6z2" colspan="2" style="border: medium transparent;">Moneda:</th>
+                            <td class="tg-s6z2" colspan="2" style="background: White; border: medium transparent;"><span t-field="o.currency_id"/></td>
                           </tr>
                           <tr>
-                            <th class="tg-s6z2" colspan="2">Fecha Pago:</th>
-                            <td class="tg-s6z2" colspan="2"><span t-field="o.payment_date"/></td>
+                            <th class="tg-s6z2" colspan="2" style="border: medium transparent;">Fecha Pago:</th>
+                            <td class="tg-s6z2" colspan="2" style="background: White; border: medium transparent;"><span t-field="o.payment_date"/></td>
                           </tr>
                         </tbody>
                     </table>
@@ -190,7 +204,7 @@
                                   <span t-esc="pago.get('num_operacion')"/>
                                 </span>
                             </td>
-                            <td colspan="6"><strong>Importe con letra: </strong> <t t-esc="o._mount_to_text(monto_pago)" /></td>
+                            <td colspan="6" style="background: White;"><strong>Importe con letra: </strong> <t t-esc="o._mount_to_text(monto_pago)" /></td>
                           </tr>
                         </tbody>
                     </table>
