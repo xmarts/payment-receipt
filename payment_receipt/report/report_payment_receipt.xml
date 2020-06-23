@@ -38,17 +38,17 @@
     <div class="header" >
         <div class="row mt32 mb32" style="width:100%">
           <div class="col-6 text-center" style="width:40%">
-            <img t-att-src="image_data_uri(company.logo)" style="max-height: 200px;" alt="Logo"/>
+            <img t-att-src="image_data_uri(company.logo)" style="max-height: 150px;" alt="Logo"/>
           </div>
-          <div class="col-6 text-center" style="width:30%">
-            <h5><strong>WNI MEXICO S.A DE S.V</strong></h5>
+          <div class="col-6 text-center" style="width:30%; font-size: 80%;">
+            <h6><strong>WNI MEXICO S.A DE S.V</strong></h6>
             WME051219G52<br/>
             General de Ley Personas Morales<br/>
             Francisco Pimentel No.98<br/>
             San Rafael,<br/>
             Ciudad de México, México CP:06470<br/>
           </div>
-          <div class="col-6 text-center" style="width:30%">
+          <div class="col-6 text-center" style="width:30%; font-size: 80%;">
             <h6><strong>Recibo Electrónico de Pagos:</strong></h6>
             <h5><span t-field="o.name"/></h5>
             <strong>Folio Fiscal:</strong><br/>
@@ -95,7 +95,7 @@
                       <t t-set="pago" t-value="o.complemento_pago(xml)" />
                   </t>
                   <div class="page">
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <br/><br/><br/><br/><br/><br/><br/>
                     <table border="1" style="width:100%; border: 2px solid;">
                         <tr>
                           <td style="width:50%; border: 2px solid;">
