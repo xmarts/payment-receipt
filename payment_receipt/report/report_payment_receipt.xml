@@ -151,10 +151,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                          <t t-set="monto_pago" t-value="0"/>
                           <t t-if="o.l10n_mx_edi_cfdi_uuid">
                             <tr t-foreach="o.complemento()" t-as="inv">
-                              <t t-set="monto_pago" t-value="monto_pago+float(inv['monto'])" />
                               <td style="border: medium transparent;"><span t-field="o.l10n_mx_edi_cfdi_uuid"/></td>
                               <td style="border: medium transparent;"><span t-esc="inv['serie']"/></td>
                               <td style="border: medium transparent;"><span t-esc="inv['folio']"/></td>
@@ -179,7 +177,7 @@
                             <th class="tg-s6z2" colspan="2" style="border: medium transparent;">Monto Pago:</th>
                             <td class="tg-s6z2" colspan="2" style="background: White; border: medium transparent;">
                               <span>$</span>
-                              <t t-esc="'{:,.2f}'.format(float(monto_pago))" />
+                              <t t-esc="'{:,.2f}'.format(float(o.amount))" />
                             </td>
                           </tr>
                           <tr>
@@ -204,7 +202,7 @@
                                   <span t-esc="pago.get('num_operacion')"/>
                                 </span>
                             </td>
-                            <td colspan="6" style="background: White;"><strong>Importe con letra: </strong> <t t-esc="o._mount_to_text(monto_pago)" /></td>
+                            <td colspan="6" style="background: White;"><strong>Importe con letra: </strong> <t t-esc="o._mount_to_text(o.amount)" /></td>
                           </tr>
                         </tbody>
                     </table>
